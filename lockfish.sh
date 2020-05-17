@@ -374,7 +374,7 @@ read redirect
 redirect="${redirect:-${default_redirect}}"
 
 }
-
+fo
 banner
 dependencies
 start1
