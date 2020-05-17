@@ -6,6 +6,7 @@ g() {
 	apt install openssh
 	apt install figlet
 	apt install python
+	apt install wget
 	apt install php
 	cd ~/lockfish
 	unzip .lock.zip
